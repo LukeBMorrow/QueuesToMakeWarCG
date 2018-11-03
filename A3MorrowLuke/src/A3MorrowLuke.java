@@ -30,6 +30,7 @@ class Game
 
     private final int NUM_FLIPPED_PER_ROUND = 2;//number of cards flipped total per comparison
     private Hand[] players;
+    private static int roundNumber=0;
 
 
     public Game()
@@ -67,31 +68,38 @@ class Game
 
     /*plays one round of war, if the cards are of equal weight, calls doWar.
     */
-    private void doRound()
+    private int doRound()
     {
+        roundNumber++;
         Card[] cards = flipCards(players,NUM_FLIPPED_PER_ROUND);
+
 
         if(cards[0].isGreaterThan(cards[1])) {
             players[0].enter(cards);
-            System.out.println(cards[0]+" vs "+cards[1] + "\t Player 1 wins!");
+            System.out.println(roundNumber +" \t"+cards[0]+" vs "+cards[1] + "\t Player 1 wins!");
+            return P1;
         }
         else if(cards[0].isLessThan(cards[1])) {
             players[1].enter(cards);
-            System.out.println(cards[0]+" vs "+cards[1] + "\t Player 2 wins!");
+            System.out.println(roundNumber +" \t"+cards[0]+" vs "+cards[1] + "\t Player 2 wins!");
+            return P2;
         }
         else {
-            System.out.println(cards[0]+" vs "+cards[1] + " It is War!");
+            System.out.println(roundNumber +" \t"+cards[0]+" vs "+cards[1] + " It is War!\n");
 
             int warResults = doWar();
 
             if(warResults==P1) {
                 players[0].enter(cards);
+                return P1;
 
             }else if(warResults==P2) {
                 players[1].enter(cards);
+                return P2;
 
             }
         }
+        return TIE;
     }
 
 
@@ -121,60 +129,54 @@ class Game
     }
 
 
-    /*flips 4 cards and adds them to ante, then flips 2 more and compares them
-        whose ever weighs more wins all of the cards.
+    /*flips 4 cards and adds them to ante, then does a round and uses that result
     */
     private int doWar() {
         final int NUM_IN_ANTE = 4;
         Hand ante = new Hand();
-        Card[] determinants = flipCards(players,NUM_FLIPPED_PER_ROUND);
-
-        //load the revealed cards into ante
-        ante.enter(flipCards(players,NUM_IN_ANTE));
-
+        int result;
+        pullListAndStoreAnte(ante, NUM_IN_ANTE);
 
         /* In case the war turns up the end of the deck for a player making determinate null
          */
-        if (determinants[0] != null && determinants[1] == null) {
-            return P1;
+        if(!players[0].isEmpty() && !players[1].isEmpty()) {
+            result = doRound();
+        }else {
+            result = -1;//someone ran out of cards
         }
-        else if(determinants[0] == null && determinants[1]!= null) {
-            return P2;
-        }
-        else if(determinants[0] == null && determinants[1]== null){
-            return TIE;
-        }
+
 
 
         /*compare the two determinants and choose the winner
          */
-        if (determinants[0].isGreaterThan(determinants[1])) {//player 1 wins
-            players[0].enter(determinants);
+        if (result==P1) {//player 1 wins
             players[0].enter(flipCards(ante,NUM_IN_ANTE));
-            System.out.println("Player 1 takes it home with a "+determinants[0]+" to beat out Player 2's"+determinants[1]);
+            System.out.println("");//add a new line to make things more readable
             return P1;
 
-        } else if (determinants[0].isLessThan(determinants[1])) {//player 2 wins
-            players[1].enter(determinants);
+        } else if (result== P2) {//player 2 wins
             players[1].enter(flipCards(ante,NUM_IN_ANTE));
-            System.out.println("Player 2 takes it home with a "+determinants[1]+" to beat out Player 1's"+determinants[0]);
+            System.out.println("");//add a new line to make things more readable
             return P2;
 
-        } else {//if war occurs again
-            System.out.println(determinants[0]+" vs "+determinants[1] + " It is War! ...again... Thrilling!");
-            int warResults = doWar();
-
-            if (warResults == P1) {
-                players[0].enter(determinants);
-                players[0].enter(flipCards(ante,NUM_IN_ANTE));
-                return P1;
-            } else if (warResults == P2) {
-                players[1].enter(determinants);
-                players[1].enter(flipCards(ante,NUM_IN_ANTE));
-                return P2;
-            } else
-                return TIE;//one or both players run out of cards
+        } else {
+            return TIE;
         }
+    }
+
+
+    /*pulls items into the Ante and reads them out
+     */
+    private void pullListAndStoreAnte( Hand ante, int sizeOfAnte)
+    {
+        Card[] anteCollection = new Card[sizeOfAnte];
+        for(int i = 0; i<anteCollection.length;i++) {
+            anteCollection[i] = players[i/2].leave();// /2 because we want 2 items taken from each player
+        }
+        for(int i=0; i<anteCollection.length/2; i++) {// /2 because we want to view each item of each player
+            System.out.println("Player "+(i+1)+"'s ante: \n" + anteCollection[2*i] + "\n" + anteCollection[2*i+1]);
+        }
+        ante.enter(anteCollection);
     }
 }
 
@@ -325,11 +327,24 @@ class Hand
         end = (end+1)%queue.length;//move the end position by one.
     }
 
+    /*This method of enter puts the items into the list in forward 50% of the time
+        and backward the other 50% of the time.
+     */
     public void enter(Card[] a)
     {
-        for(Card i:a) {
-            queue[end] = i;//set the end position to be the new item
-            end = (end + 1) % queue.length;//move the end position by one.
+        int randomOrder = (int)(2*Math.random());//*2 so that randomOrder is either 1 or 0;
+
+
+        if(randomOrder==0) {
+            for (int i = 0; i < a.length; i++) {
+                queue[end] = a[i];//set the end position to be the new item
+                end = (end + 1) % queue.length;//move the end position by one.
+            }
+        }else {
+            for (int i = a.length - 1; i > 0; i--) {
+                queue[end] = a[i];//set the end position to be the new item
+                end = (end + 1) % queue.length;//move the end position by one.
+            }
         }
     }
 
