@@ -15,15 +15,20 @@
       <file leaf-file-name="A3MorrowLuke.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/A3MorrowLuke.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1250">
-              <caret line="71" column="4" lean-forward="false" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding>
+                <element signature="class#A3MorrowLuke#0" expanded="false" />
+                <element signature="class#Game#0" expanded="false" />
+                <element signature="method#Game#0;class#Game#0" expanded="false" />
                 <element signature="method#playGame#0;class#Game#0" expanded="false" />
                 <element signature="method#doRound#0;class#Game#0" expanded="false" />
                 <element signature="method#flipCards#0;class#Game#0" expanded="false" />
                 <element signature="method#flipCards#1;class#Game#0" expanded="false" />
-                <element signature="method#pullListAndStoreAnte#0;class#Game#0" expanded="false" />
+                <element signature="method#doWar#0;class#Game#0" expanded="false" />
+                <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
                 <element signature="class#Deck#0" expanded="false" />
+                <element signature="class#Card#0" expanded="false" />
                 <element signature="class#Hand#0" expanded="false" />
               </folding>
             </state>
@@ -45,6 +50,10 @@
       <find>player1</find>
       <find>player2</find>
       <find>p1Determinate</find>
+      <find>players[1]</find>
+      <find>players[0]</find>
+      <find>cards[0]</find>
+      <find>cards[1]</find>
     </findStrings>
     <replaceStrings>
       <replace>player1</replace>
@@ -55,6 +64,10 @@
       <replace>determinate[1]</replace>
       <replace>players[0]</replace>
       <replace>players[1]</replace>
+      <replace>players[P2]</replace>
+      <replace>players[P1]</replace>
+      <replace>cards[P1]</replace>
+      <replace>cards[P2]</replace>
     </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -92,9 +105,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,6 +127,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -298,25 +311,25 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5104167" order="7" side_tool="true" content_ui="tabs" x="0" y="456" width="1920" height="219" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13361612" sideWeight="0.47916666" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33510074" sideWeight="0.47916666" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.48958334" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30010605" sideWeight="0.4875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3361612" sideWeight="0.4875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.48958334" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -324,7 +337,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -334,12 +347,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#playGame#0;class#Game#0" expanded="false" />
             <element signature="method#doRound#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#1;class#Game#0" expanded="false" />
-            <element signature="method#pullListAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
             <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
             <element signature="class#Hand#0" expanded="false" />
           </folding>
         </state>
@@ -350,12 +368,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#playGame#0;class#Game#0" expanded="false" />
             <element signature="method#doRound#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#1;class#Game#0" expanded="false" />
-            <element signature="method#pullListAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
             <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
             <element signature="class#Hand#0" expanded="false" />
           </folding>
         </state>
@@ -366,12 +389,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#playGame#0;class#Game#0" expanded="false" />
             <element signature="method#doRound#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#1;class#Game#0" expanded="false" />
-            <element signature="method#pullListAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
             <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
             <element signature="class#Hand#0" expanded="false" />
           </folding>
         </state>
@@ -382,12 +410,59 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#playGame#0;class#Game#0" expanded="false" />
             <element signature="method#doRound#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#1;class#Game#0" expanded="false" />
-            <element signature="method#pullListAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
             <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
+            <element signature="class#Hand#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/A3MorrowLuke.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
+            <element signature="method#playGame#0;class#Game#0" expanded="false" />
+            <element signature="method#doRound#0;class#Game#0" expanded="false" />
+            <element signature="method#flipCards#0;class#Game#0" expanded="false" />
+            <element signature="method#flipCards#1;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
+            <element signature="class#Hand#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/A3MorrowLuke.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
+            <element signature="method#playGame#0;class#Game#0" expanded="false" />
+            <element signature="method#doRound#0;class#Game#0" expanded="false" />
+            <element signature="method#flipCards#0;class#Game#0" expanded="false" />
+            <element signature="method#flipCards#1;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
             <element signature="class#Hand#0" expanded="false" />
           </folding>
         </state>
@@ -407,17 +482,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/PrintStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="804" column="0" lean-forward="false" selection-start-line="804" selection-start-column="0" selection-end-line="804" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/A3MorrowLuke.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1250">
-          <caret line="71" column="4" lean-forward="false" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
+            <element signature="class#A3MorrowLuke#0" expanded="false" />
+            <element signature="class#Game#0" expanded="false" />
+            <element signature="method#Game#0;class#Game#0" expanded="false" />
             <element signature="method#playGame#0;class#Game#0" expanded="false" />
             <element signature="method#doRound#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#0;class#Game#0" expanded="false" />
             <element signature="method#flipCards#1;class#Game#0" expanded="false" />
-            <element signature="method#pullListAndStoreAnte#0;class#Game#0" expanded="false" />
+            <element signature="method#doWar#0;class#Game#0" expanded="false" />
+            <element signature="method#pullPrintAndStoreAnte#0;class#Game#0" expanded="false" />
             <element signature="class#Deck#0" expanded="false" />
+            <element signature="class#Card#0" expanded="false" />
             <element signature="class#Hand#0" expanded="false" />
           </folding>
         </state>

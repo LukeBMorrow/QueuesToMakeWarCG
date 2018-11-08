@@ -24,9 +24,9 @@ class Game
 
     /*tags used for returning who won the war
     */
-    private static final int P1 = 1;
-    private static final int P2 = 2;
-    private static final int TIE = 0;//in the case that both players run out of cards
+    private static final int P1 = 0;
+    private static final int P2 = 1;
+    private static final int TIE = -1;//in the case that both players run out of cards
 
     private final int NUM_FLIPPED_PER_ROUND = 2;//number of cards flipped total per comparison
     private Hand[] players;
@@ -39,10 +39,10 @@ class Game
         */
         players = new Hand[2];
         Deck mainDeck = new Deck();
-        players[0] = new Hand();
-        players[1] = new Hand();
+        players[P1] = new Hand();
+        players[P2] = new Hand();
 
-        mainDeck.dealHands(players[0],players[1]);
+        mainDeck.dealHands(players[P1],players[P2]);
     }
 
     /*the program spends most of its time in this method, it keeps running until
@@ -52,13 +52,13 @@ class Game
     public void playGame()
     {
 
-        while(!players[0].isEmpty() && !players[1].isEmpty()) {
+        while(!players[P1].isEmpty() && !players[P2].isEmpty()) {
             doRound();
         }
 
         /*win or loss conditions and notifications for the user.
          */
-        if(!players[0].isEmpty()) {
+        if(!players[P1].isEmpty()) {
             System.out.println("Player 2 ran out of cards! Player 1 wins!!");
         }
         else{
@@ -73,28 +73,29 @@ class Game
         roundNumber++;
         Card[] cards = flipCards(players,NUM_FLIPPED_PER_ROUND);
 
+        System.out.print("round:"+roundNumber +" \t");
 
-        if(cards[0].isGreaterThan(cards[1])) {
-            players[0].enter(cards);
-            System.out.println(roundNumber +" \t"+cards[0]+" vs "+cards[1] + "\t Player 1 wins!");
+        if(cards[P1].isGreaterThan(cards[P2])) {
+            players[P1].enter(cards);
+            System.out.println(cards[P1]+" vs "+cards[P2] + "\t Player 1 wins!");
             return P1;
         }
-        else if(cards[0].isLessThan(cards[1])) {
-            players[1].enter(cards);
-            System.out.println(roundNumber +" \t"+cards[0]+" vs "+cards[1] + "\t Player 2 wins!");
+        else if(cards[P1].isLessThan(cards[P2])) {
+            players[P2].enter(cards);
+            System.out.println(cards[P1]+" vs "+cards[P2] + "\t Player 2 wins!");
             return P2;
         }
         else {
-            System.out.println(roundNumber +" \t"+cards[0]+" vs "+cards[1] + " It is War!\n");
+            System.out.println(cards[P1]+" vs "+cards[P2] + "\t It is War!");
 
             int warResults = doWar();
 
             if(warResults==P1) {
-                players[0].enter(cards);
+                players[P1].enter(cards);
                 return P1;
 
             }else if(warResults==P2) {
-                players[1].enter(cards);
+                players[P2].enter(cards);
                 return P2;
 
             }
@@ -135,28 +136,26 @@ class Game
         final int NUM_IN_ANTE = 4;
         Hand ante = new Hand();
         int result;
-        pullListAndStoreAnte(ante, NUM_IN_ANTE);
+        pullPrintAndStoreAnte(ante, NUM_IN_ANTE);
 
         /* In case the war turns up the end of the deck for a player making determinate null
          */
-        if(!players[0].isEmpty() && !players[1].isEmpty()) {
+        if(!players[P1].isEmpty() && !players[P2].isEmpty()) {
             result = doRound();
         }else {
-            result = -1;//someone ran out of cards
+            result = TIE;//someone ran out of cards
         }
-
-
 
         /*compare the two determinants and choose the winner
          */
         if (result==P1) {//player 1 wins
-            players[0].enter(flipCards(ante,NUM_IN_ANTE));
-            System.out.println("");//add a new line to make things more readable
+            players[P1].enter(flipCards(ante,NUM_IN_ANTE));
+            System.out.println("\t\tPlayer 1 won the war!!!!! \n");//add a new line to make things more readable
             return P1;
 
         } else if (result== P2) {//player 2 wins
-            players[1].enter(flipCards(ante,NUM_IN_ANTE));
-            System.out.println("");//add a new line to make things more readable
+            players[P2].enter(flipCards(ante,NUM_IN_ANTE));
+            System.out.println("\t\tPlayer 2 won the war!!!!!\n");//add a new line to make things more readable
             return P2;
 
         } else {
@@ -167,16 +166,20 @@ class Game
 
     /*pulls items into the Ante and reads them out
      */
-    private void pullListAndStoreAnte( Hand ante, int sizeOfAnte)
+    private void pullPrintAndStoreAnte(Hand ante, int sizeOfAnte)
     {
         Card[] anteCollection = new Card[sizeOfAnte];
         for(int i = 0; i<anteCollection.length;i++) {
             anteCollection[i] = players[i/2].leave();// /2 because we want 2 items taken from each player
         }
         for(int i=0; i<anteCollection.length/2; i++) {// /2 because we want to view each item of each player
-            System.out.println("Player "+(i+1)+"'s ante: \n" + anteCollection[2*i] + "\n" + anteCollection[2*i+1]);
+            if(anteCollection[2*i] != null && anteCollection[2*i+1]!=null) {
+                System.out.println("\t\tPlayer " + (i + 1) + "'s ante: \n\t\t\t" + anteCollection[2 * i] + "\n\t\t\t" + anteCollection[2 * i + 1]);
+            }else {
+                System.out.println("Player " + (i + 1) + " ran out of cards while drawing the ante.");
+            }
         }
-        ante.enter(anteCollection);
+        ante.enter(anteCollection);//puts the array into the ante
     }
 }
 
@@ -266,7 +269,7 @@ class Card
     /*a sort of make-shift dictionary in which number values are converted
         into string values appropriate for cards
     */
-    private String[] SUIT_TRANSLATION = {"S", "D", "H", "C"};
+    private char[] SUIT_TRANSLATION = {9824, 9827, 9829, 9830};
     private String[] VALUE_TRANSLATION = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
     private final int SUIT_SIZE = 13;
 
@@ -341,7 +344,7 @@ class Hand
                 end = (end + 1) % queue.length;//move the end position by one.
             }
         }else {
-            for (int i = a.length - 1; i > 0; i--) {
+            for (int i = a.length - 1; i >= 0; i--) {
                 queue[end] = a[i];//set the end position to be the new item
                 end = (end + 1) % queue.length;//move the end position by one.
             }
@@ -365,6 +368,6 @@ class Hand
         an item at the front of the queue.
     */
     public boolean isEmpty()
-    {return queue[start] == null;}
+    {return (queue[start] == null);}
 
 }
